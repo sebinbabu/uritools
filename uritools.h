@@ -1,5 +1,5 @@
-#ifndef URL_TOOLS_H
-#define URL_TOOLS_H
+#ifndef URI_TOOLS_H
+#define URI_TOOLS_H
 
 typedef struct URL {
 	char *scheme;
