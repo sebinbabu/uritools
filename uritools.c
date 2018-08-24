@@ -14,9 +14,9 @@ static inline int natoi(const char *str, size_t len)
 	return r;
 }
 
-static inline int is_relative(const char *url)
+static inline int is_relative(const char *uri)
 {
-	return (*url == '/') ? 1 : 0;
+	return (*uri == '/') ? 1 : 0;
 }
 
 static inline char *parse_scheme(char *str)
@@ -63,13 +63,13 @@ static inline char *find_path(char *str)
 	return find_and_terminate(str, '/');
 }
 
-int url_parse(url *u, char *s)
+int uri_parse(uri *u, char *s)
 {
 	if (NULL == u || NULL == s) {
 		return -1;
 	}
 
-	memset(u, 0, sizeof (url));
+	memset(u, 0, sizeof (uri));
 
 	u->fragment = find_fragment(s);
 	u->query = find_query(s);
@@ -133,7 +133,7 @@ int url_parse(url *u, char *s)
 	return 0;
 }
 
-int url_path_split(char *buf, char **resume)
+int uri_path_split(char *buf, char **resume)
 {
 	int i = 0;
 	char *path = *resume;
@@ -152,6 +152,6 @@ int url_path_split(char *buf, char **resume)
 	return i;
 }
 
-void url_free(url *u) {
-	free(u->url_str);
+void uri_free(uri *u) {
+	free(u->uri_str);
 }

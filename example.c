@@ -5,16 +5,16 @@
 int main(int argc, char **argv)
 {
 	int p;
-	url u;
+	uri u;
 	char buf[20], *path;
-	char *url_string = argv[1];
+	char *uri_string = argv[1];
 
-	if (url_parse(&u, url_string) == -1) {
-		fprintf(stderr, "Could not parse url!\n");
+	if (uri_parse(&u, uri_string) == -1) {
+		fprintf(stderr, "Could not parse uri!\n");
 		return 1;
 	}
 
-	fprintf(stdout, "URL Values:\n");
+	fprintf(stdout, "uri Values:\n");
 	fprintf(stdout, "\tprotocol:\t%s\n", u.scheme);
 	fprintf(stdout, "\thost:\t\t%s\n", u.host);
 	fprintf(stdout, "\tport:\t\t%d\n", u.port);
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	path = u.path;
 
 	fprintf(stdout, "Split paths:\n");
-	while(url_path_split(buf, &path) > 0)
+	while(uri_path_split(buf, &path) > 0)
 		printf("\t%s\n", buf);
 	return 0;
 }
